@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<script src="getData.js"></script>
+		<meta charset="UTF-8" />
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="_bootswatch.scss">
+    <link rel="stylesheet" href="_variables.scss">
+    <link rel="stylesheet" href="bootstrap.min.css">
+		<meta name="viewport"
+			content="width=device-width, initial-scale=1.0" />
+		<title>Details</title>
+	</head>
+
+	<body>
+    <style>
+      body {
+        background-color: #232F3E;
+        color: rgb(186, 213, 222);  
+      }
+    </style>
+		<!-- Here a loader is created which
+			loads till response comes -->
+		<div class="d-flex justify-content-center">
+			<div class="spinner-border" style="background-color: cyan;"
+				role="status" id="loading">
+				<span class="sr-only"><div class="progress">
+          <div class="progress-bar progress-bar-striped bg-info" role="status" style="width: 50%;" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+        </div></span>
+			</div>
+		</div>
+		<h1 align="center" style="color: rgb(11, 28, 28);">Persons List</h1>
+		<!-- table for showing data -->
+        <table align="center" id="persons" style="width:50%">
+            <tr scope="row">
+              <th>Person ID</th>
+              <th>Person Name</th>
+              <th>User Company</th>
+              <th>User Role</th>
+            </tr>
+          </table>          <style>
+            table, td {
+              border:1px solid black;
+              font-family: cursive;
+            }
+            th{
+              border:1px solid rgb(9, 10, 10);
+              font-family: cursive;
+              color: #FFFFFF;
+            }
+            </style>
+	</body>
+    <a href="s3LambdaHosting.html"><button class="button" style="vertical-align:middle"><span > Back</span></button></a>
+    <style>
+        .button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 10% 40%;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+	
+  content: '⇍';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-left: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  left: 0;
+}
+        </style>
+</html>

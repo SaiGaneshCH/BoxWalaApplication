@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    
+    
+
+
+    <title>Store Files</title>
+  <link rel="stylesheet" href="bootstrap copy.css">
+  <link rel="stylesheet" href="_bootswatch copy.scss">
+  <link rel="stylesheet" href="_variables copy.scss">
+  <link rel="stylesheet" href="bootstrap.min copy.css">
+  <script src="getData.js"></script>
+  </head>
+  <body>
+    <a href="https://s3-lambda-apihosting.s3.us-east-2.amazonaws.com/home.html"><button class="button" style="vertical-align:middle"><span > Back</span></button></a>
+    <style>
+        .button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #0d0c0c;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 0px;
+  width: 150px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 0% 45%;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+	
+  content: '⇍';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-left: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  left: 0;
+}
+        </style>
+     <div class="card" style="max-width: 45%;height: 4%;margin-left: 28%;margin-top: 2%;" align="center">
+    <div class="card-body">
+      <h4 class="card-title" style="font-family: Papyrus;">Box Wala <img src="box.png" style="max-width:10%;height: auto;"></h4>
+      <h6 class="card-subtitle mb-2 text-muted" style="font-family: Lucida Handwriting;">Store em in your Boxes</h6>
+     </div></div>
+<div align="center" style="margin-top: 5%;">
+  <div class="card text-white bg-secondary mb-3" style="width: max-content;height: 50%;" >
+    <div class="card-header">Upload your files here👇👇</div>
+    <div class="card-body">
+      <h4 class="card-title">File Storage</h4>
+
+
+    <form enctype="multipart/form-data" method="POST" align = "center">
+      <!-- <div class="card-header" align="center">Confirm Yourself</div>
+
+      <div class="form-floating mb-3">
+        <input type="number" class="form-control" id="id" placeholder="Your ID Number">
+        <label for="floatingInput">Enter your Person Id</label>
+      </div> -->
+<label for="myfile">Select files:</label>
+      <input type="file" name="file" class="btn btn-dark" multiple><br><br>
+      <input type="submit" class="btn btn-dark" onclick="uploader()" value="Upload">
+      <!-- <input type="submit" class="btn btn-dark" onclick="uploader(document.getElementById('id').value)" value="Upload"> -->
+    </form>
+</div>
+<div class="card-header" ><marquee>Please kindly upload only one file at a time,we are updating our application to take multiple inputs for your convenience and bear with us</marquee></div>
+</div>
+
+</div>
+<div align="center">
+  <h2 id="user"></h2>
+  <h2>BoxWala</h2>
+  <script>
+      let person = sessionStorage.getItem("user");
+      document.getElementById("user").innerHTML = person;
+  </script>
+</div>
+    <!-- <script>
+      const form = document.querySelector('form');
+      form.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        const fileInput = document.querySelector('input[type="file"]');
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = async () => {
+          const base64Data = reader.result.split(',')[1];
+          const response = await fetch('https://nk31rrtk7c.execute-api.us-east-2.amazonaws.com/test/demo', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ data: base64Data, fileName: file.name })
+          }).then(response => response.text())
+           .then(result => location.href="stored.html");
+          const result = await response.json();
+          console.log(result);
+        };
+        reader.onerror = (error) => {
+          console.error(error);
+        };
+      });
+
+    </script> -->
+<style>
+  body{
+    background-color: #6cc3d5;
+  }
+</style>
+  </body>
+</html>

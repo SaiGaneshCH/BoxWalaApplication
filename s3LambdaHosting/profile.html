@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    <title>Login Page</title>
+    <script src="getData.js"></script>
+    <script src="event-handler.js"></script>
+
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="_bootswatch.scss">
+    <link rel="stylesheet" href="_variables.scss">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    </head>
+    <div class="card" style="max-width: 50%;height: 4%;margin-left: 28%;" align="center">
+        <div class="card-body">
+         
+        <table class="table table-hover">
+            <thead>
+             <h2 align="center"> Profile </h2>
+            </thead>
+            <tbody>
+              <tr class="table-active">
+                <th scope="row">User Job ID</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><h3 id="pId"></h3></td>
+              </tr>
+              
+              <tr class="table-secondary">
+                <th scope="row">User Name</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><h3 id="user"></h3></td>
+              </tr>
+             
+              <tr class="table-light">
+                <th scope="row">Company</th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><h3 id="pc"></h3></td>
+              </tr>
+              <tr class="table-dark">
+                <th scope="row">Job Role</th>
+                <td></td>
+                <td></td>
+                <td><h3 id="pr"></h3></td>
+              </tr>
+            </tbody>
+          </table>
+          <script>
+            
+            if(sessionStorage.getItem("user")==null){
+                location.href = "/login.html"
+              }
+            let pName = sessionStorage.getItem("user");
+              document.getElementById("user").innerHTML += pName;
+        
+            var pId = sessionStorage.getItem("ProfileId")
+              document.getElementById("pId").innerHTML += pId;
+        
+        
+            var pC = sessionStorage.getItem("ProfileCompany")
+              document.getElementById("pc").innerHTML += pC;
+            
+            
+              var pR = sessionStorage.getItem("ProfileRole")
+              document.getElementById("pr").innerHTML += pName;
+        
+              
+          </script>
+        </div>
+      </div>
+      <a href="/home.html"><button class="button" style="vertical-align:middle"><span > Back</span></button></a>
+
+   
+  <div class="alert alert-dismissible alert-secondary" style="margin-top: 3%;">
+    
+    <!-- <h2 id="user"></h2> -->
+   
+    <div class="d-grid gap-2" align="center" style="margin-left: 7%;">
+      <button class="btn btn-lg btn-secondary"  type="button" onclick="logout()">LogOut</button>
+    </div>
+  </div>
+  
+
+    <style>
+        .button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5% 40%;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+	
+  content: '⇍';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-left: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  left: 0;
+}
+        </style>
+
+</html>

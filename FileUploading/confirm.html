@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    <title>Confirm your id</title>
+    <script src="getData.js"></script>
+    <!-- <script src="event-handler.js"></script> -->
+      
+    <link rel="stylesheet" href="bootstrap copy.css">
+  <link rel="stylesheet" href="_bootswatch copy.scss">
+  <link rel="stylesheet" href="_variables copy.scss">
+  <link rel="stylesheet" href="bootstrap.min copy.css">
+    </head>
+    <div style="height: 25%;" id="Uid"> 
+      <div class="row" style="justify-content: space-around;margin-top: 15%;width: 25%;margin-left: 37%;">
+    <div class="card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-header" align="center">Confirm Yourself</div>
+        <div class="card-body" align="center">
+          <h4 class="card-title">Please enter your Id Number</h4>
+          <div class="form-group">
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="id" placeholder="Your ID Number">
+              <label for="floatingInput">Your Person ID</label>
+            </div>
+          </div>
+          <button  type="submit" class="btn btn-secondary" onclick="checkId(document.getElementById('id').value)">Verify!</button>
+        </div>
+      </div> 
+  </div>
+  </div>
+</html>
