@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>MyFiles Page</title>
+    <script src="getData.js"></script>
+    <!-- <script src="getFiles.js"></script> -->
+    <!-- <script src="event-handler.js"></script> -->
+
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="_bootswatch.scss">
+    <link rel="stylesheet" href="_variables.scss">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+      var filesRetriever = (id)=>{
+        // instantiate a headers object
+        var myHeaders = new Headers();
+        // add content type header to object
+        myHeaders.append("Content-Type", "application/json");
+        // using built in JSON utility package turn object to string and store in a variable
+        var raw = JSON.stringify({"id":id});
+        console.log(raw);
+        // create a JSON object with parameters for API call and store in a variable
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+        // make API call with parameters and use promises to get response
+        fetch("https://yhkehljqbi.execute-api.us-east-2.amazonaws.com/test/demo", requestOptions)
+         .then(response => response.text())
+        //  .then(result => console.log(result))
+         .then(result => showData(result))
+        .catch(error => {return Promise.reject()});
+    }
+
+
+    function showData(data){
+    buckObjs = JSON.parse(data);
+    console.log(data);
+    let tab = `<tr>
+<th>Your Files are</th>
+</tr>`
+    console.log(buckObjs);
+   
+    // for (let i = 0; i < buckObjs.length; i++) {
+    //     console.log(buckObjs[i]);
+    //     tab += `<tr>
+    //     <td>${buckObjs[i]}</td>
+    // </tr>`;
+    // }
+    for(let i  of buckObjs){
+      tab += `<tr><td>${i}</td></tr>`;
+    }
+    document.getElementById("files").innerHTML += tab;
+           
+
+}
+    </script>
+    
+</head>
+<br>
+<br>
+    <!-- <a href="PersonDetails.html" style="color: goldenrod;" type="button">GET Every Details!!</a> -->
+
+<body>
+  <div class="card" style="max-width: 45%;height: 4%;margin-left: 28%;" align="center">
+    <div class="card-body">
+          <table id="files"></table>
+      </div>
+    </div>
+    
+  </div>
+  <script>
+    // let person = sessionStorage.getItem("user");
+    // document.getElementById("user").innerHTML = person;
+    if(sessionStorage.getItem("person")==null){
+      location.href = "/confirm.html"
+    }
+    var uID = sessionStorage.getItem("person");
+    filesRetriever(uID);
+</script>
+</body>
+</html>

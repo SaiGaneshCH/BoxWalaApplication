@@ -4,6 +4,7 @@ const api_url =
 
 	var data;
 	var loggedUser;
+	var person;
 	var ProfileId;
 	var ProfileRole;
 	var ProfileCompany;
@@ -29,29 +30,7 @@ getapi(api_url);
 function hideloader() {
 	document.getElementById('loading').style.display = 'none';
 }
-// Function to define innerHTML for HTML table
-// function show(data) {
-// 	let tab =
-// 		`<tr>
-// 		<th>Person Id</th>
-// 		<th>Person Name</th>
-// 		<th>User Company</th>
-// 		<th>User Role</th>
-// 		</tr>`;
-	
-// 	// Loop to access all rows
-// 	for (let r of data) {
-// 		tab += `<tr>
-// 	<td>${r.id} </td>
-// 	<td>${r.Name}</td>
-// 	<td>${r.Company}</td>
-// 	<td>${r.Role}</td>
-// </tr>`;
-// 	}
-// 	// Setting innerHTML as tab variable
-// 	document.getElementById("persons").innerHTML = tab;
-// }
-// var logData;
+
 function onButtonPress() {
     $('.alert').alert('close')
 }
@@ -66,6 +45,7 @@ function checkLogin(id,pwd){
 			ProfileRole = r['Role'];
 			loggedUser = r['Name'];
 			ProfileCompany = r['Company'];
+			
 			console.log(r);
 			// window.location="/home.html";
 			sessionStorage.setItem("ProfileId",ProfileId);
@@ -88,13 +68,18 @@ function checkLogin(id,pwd){
 }
 function logout(){
 	loggedUser = null
-	window.location = "login.html"
+	window.location = "/index.html"
 }
+var loggedIn = 0;
 function checkId(id){
 	uid = JSON.stringify({"id":id});
 	for(let i of data){
 		if(i['id']===id){
-			window.location = "http://file-uploader-30199.s3-website.us-east-2.amazonaws.com"
+			person = i['id'];
+			// getFiles(personID);
+			sessionStorage.setItem("person",person);
+
+			window.location = "/myFiles.html"
 			
 		}
 		else{
@@ -108,3 +93,4 @@ function checkId(id){
 	}
 
 }
+
