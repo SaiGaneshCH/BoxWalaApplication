@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+    <title>Confirm your id</title>
+    <script src="getData.js"></script>
+    <!-- <script src="getFiles.js"></script> -->
+    <!-- <script src="event-handler.js"></script> -->
+      <script>var check = (id)=>{
+        // instantiate a headers object
+        var myHeaders = new Headers();
+        // add content type header to object
+        myHeaders.append("Content-Type", "application/json");
+        // using built in JSON utility package turn object to string and store in a variable
+        var raw = JSON.stringify({"id":id});
+        console.log(raw);
+        // create a JSON object with parameters for API call and store in a variable
+        var requestOptions = {
+            method: 'PUT',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
+        };
+        // make API call with parameters and use promises to get response
+        fetch("https://zvh7aicfxg.execute-api.us-east-2.amazonaws.com/Dev/cust", requestOptions)
+         .then(response => response.text())
+         .then(result => checkId(id))
+        .catch(error => {return Promise.reject()});
+    }</script>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="_bootswatch.scss">
+    <link rel="stylesheet" href="_variables.scss">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    </head>
+    <div style="height: 25%;" id="Uid">
+      <div class="row" style="justify-content: space-around;margin-top: 15%;width: 25%;margin-left: 37%;">
+    <div class="card border-secondary mb-3" style="max-width: 20rem;">
+        <div class="card-header" align="center">Confirm Yourself</div>
+        <div class="card-body" align="center">
+          <h4 class="card-title">Please enter your Id Number</h4>
+          <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+          <div class="form-group">
+            <div class="form-floating mb-3">
+              <input type="number" class="form-control" id="id" placeholder="Your ID Number">
+              <label for="floatingInput">Your Person ID</label>
+            </div>
+          
+          </div>
+          <button  type="submit" class="btn btn-secondary" onclick="check(document.getElementById('id').value)">Verify!</button>
+        </div>
+      </div> 
+  </div>
+  </div>
+</html>

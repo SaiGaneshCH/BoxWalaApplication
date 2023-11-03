@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+  <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="_bootswatch.scss">
+    <link rel="stylesheet" href="_variables.scss">
+    <link rel="stylesheet" href="bootstrap.min.css">
+  </head>
+  <body>
+    <h2 align="center">Data Added Successfully!!</h2>
+    <div class="alert alert-dismissible alert-success" style="margin-top: 10%;width: 75%;margin-left: 12%;border-radius: 10px 50px;">
+      <button type="button" class="btn-close" data-bs-dismiss="alert" onclick="pgChange()"></button>
+      <strong>Well done!</strong> You have successfully added your data!!
+    </div>
+    <script>
+     function pgChange(){
+      window.location = "/login.html"
+     }
+    </script>
+    <a href="index.html"><button class="button" style="vertical-align:middle"><span > Back</span></button></a>
+    <style>
+        .button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 10% 40%;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+	
+  content: '⇍';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-left: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  left: 0;
+}
+        </style>
+        </body>
+</html>

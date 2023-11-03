@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Register Page</title>
+    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="_bootswatch.scss">
+    <link rel="stylesheet" href="_variables.scss">
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <script>
+        // define the callAPI function that takes a first name and last name as parameters
+        var callAPI = (id,Name,Company,Role,pwd)=>{
+            // instantiate a headers object
+            var myHeaders = new Headers();
+            // add content type header to object
+            myHeaders.append("Content-Type", "application/json");
+            // using built in JSON utility package turn object to string and store in a variable
+            var raw = JSON.stringify({"id":id,"Name":Name,"Company":Company,"Role":Role,"Password":pwd,"VStatus":0});
+            console.log(raw);
+            // create a JSON object with parameters for API call and store in a variable
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+            // make API call with parameters and use promises to get response
+            fetch("https://zvh7aicfxg.execute-api.us-east-2.amazonaws.com/Dev/cust", requestOptions)
+             .then(response => response.text())
+             .then(result => location.href="saved.html")
+            .catch(error => {return Promise.reject()});
+        }
+
+    </script>
+    
+</head>
+<br>
+<br>
+    <!-- <a href="PersonDetails.html" style="color: goldenrod;" type="button">GET Every Details!!</a> -->
+
+<body>
+<form>
+  <div class="card" style="max-width: 45%;height: 4%;margin-left: 28%;" align="center">
+    <div class="card-body">
+      <h4 class="card-title" style="font-family: Papyrus;">Box Wala <img src="box.png" style="max-width:10%;height: auto;"></h4>
+      <h6 class="card-subtitle mb-2 text-muted" style="font-family: Lucida Handwriting;">Store em in your Boxes</h6>
+      <div class="form-group">
+        <label class="form-label mt-4" style="font-family: fantasy;color: navy;">Register Here!!</label>
+        <div class="form-floating mb-3">
+          <input type="number" class="form-control" id="id" placeholder="xxxxxx">
+          <label for="floatingInput">Enter your Job-Id</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="Name" placeholder="ABCDEF" >
+          <label for="floatingPassword">Enter your Name</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" id="pwd" placeholder="ooooo" maxlength="12">
+            <label for="floatingPassword">Enter your Password</label>
+          </div> 
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="Company" placeholder="ABCDEF">
+            <label for="floatingPassword">Enter your Company</label>
+          </div>
+          <div class="form-floating">
+            <input type="text" class="form-control" id="Role" placeholder="ABCDEF" maxlength="10">
+            <label for="floatingPassword">Enter your Role</label>
+          </div>
+          <br>
+        </div>
+        <!-- <a href="https://s3-lambda-apihosting.s3.us-east-2.amazonaws.com/login.html" style="color: blue;">Already a User?? Login Here!!</a> -->
+        <a href="/login.html" style="color: blue;">Already a User?? Login Here!!</a>
+        <br>
+        <br>
+        <button type="button" class="btn btn-success" onclick="callAPI(document.getElementById('id').value,document.getElementById('Name').value,document.getElementById('Company').value,document.getElementById('Role').value,document.getElementById('pwd').value)">Submit</button>
+      </div>
+    </div>
+  </div>
+</form>
+</body>
+</html>
